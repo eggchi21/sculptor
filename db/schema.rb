@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_16_161911) do
+ActiveRecord::Schema.define(version: 2019_10_18_102852) do
 
   create_table "reports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.integer "weight", null: false
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 2019_10_16_161911) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_reports_on_user_id"
+  end
+
+  create_table "selfies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.string "picture", null: false
+    t.bigint "report_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["report_id"], name: "index_selfies_on_report_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
@@ -37,4 +45,5 @@ ActiveRecord::Schema.define(version: 2019_10_16_161911) do
   end
 
   add_foreign_key "reports", "users"
+  add_foreign_key "selfies", "reports"
 end
