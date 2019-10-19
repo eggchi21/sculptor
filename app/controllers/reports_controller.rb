@@ -1,4 +1,8 @@
 class ReportsController < ApplicationController
+  def index
+    @reports = Report.order('id DESC')
+  end
+
   def new
     @report = Report.new
     @report.selfies.build
