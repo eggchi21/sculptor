@@ -31,6 +31,9 @@ namespace :deploy do
   end
 end
 
+set :yarn_flags, "--prefer-offline --production --no-progress"
+set :yarn_roles, :app
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
